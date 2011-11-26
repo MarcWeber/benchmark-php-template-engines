@@ -1,16 +1,10 @@
 <table>
-	
 	{section name=outer loop=$data}
-		{section name=key loop=$data[$outer]}
-		
+		{foreach from=$data[outer] key=k item=v}
 		  <tr>
-			
-			<td>{$key}</td>
-			<td>{$data[$outer][$key]}</td>
-			
+			<td>{$k}</td>
+			<td>{$v}</td>
 		  </tr>
-	
-		{/section}
+		{/foreach}
 	{/section}
-	
 </table>

@@ -53,12 +53,9 @@ function TEMPLATE_ENGINE_SMARTY_3_1_4_run($case, $data)
 			$smarty->cache_lifetime = 120;
 			$smarty->cache_dir = CACHE_DIR;
 			
-			$smarty->assign("daat",$data);
+			$smarty->assign("data", $data);
 			
 			$result = $smarty->fetch(TEMPLATE_DIR.'/CASE_1.tpl');
-			
-			return $result;
-			
 		break;
 
 
@@ -81,13 +78,14 @@ function TEMPLATE_ENGINE_SMARTY_3_1_4_run($case, $data)
 			
 			$result = $smarty->fetch(TEMPLATE_DIR.'/CASE_2.tpl');
 			
-			return $result;
-			
 		break;
 		
 		default:
 			throw new Exception("unexpected ".$case);
 	}
 
-	set_error_handler("exception_error_handler");
+	set_error_handler("ERROR_HANDLER");
+			
+	return $result;
+			
 }
