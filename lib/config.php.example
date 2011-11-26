@@ -1,0 +1,36 @@
+<?php
+define('CATCH_ERRORS','');
+// define('DEBUG','');
+
+define('DB_HOST','fill-in');
+define('DB_USER','fill-in');
+define('DB_PASSWORD','fill-in');
+define('DB_NAME','fill-in');
+
+
+function cpu_info(){
+  // for windows use something else
+  return file_get_contents('/proc/cpuinfo');
+}
+
+{ // I use this so that I can load errors into Vim's quickfix quickly:
+/*
+  $errorfile = '/var/marc/vimserver/error';
+  // if (file_exists($errorfile)) unlink($errorfile);
+
+  function custom_failure_handler($message, $trace){
+	global $errorfile;
+
+	$s = '';
+	foreach( $trace as $k){
+		  $s.="\n".(isset($k['file']) ? $k['file'] : 'nofile') 
+			.':'.(isset($k['line']) ? $k['line'] : 'no line');
+	}
+
+	file_put_contents($errorfile, str_replace('<br>',"\n",$message) . $s ,FILE_APPEND);
+	// assign 777 because I sometimes use PHP in console..
+	chmod($errorfile, 0777);
+  }
+
+*/
+}
