@@ -12,11 +12,26 @@ function TEMPLATE_ENGINE_SMARTY_3_1_4_info(){
 
 function TEMPLATE_ENGINE_SMARTY_3_1_4_setup($tmp_dir)
 {
-	define('TEMPLATE_DIR', dirname(__FILE__).'/tpl');
+
+	define('THIS_DIR',dirname(__FILE__));
+	define('TEMPLATE_DIR', THIS_DIR.'/tpl');
 	define('CACHE_DIR',$tmp_dir);
 	
 	require_once(dirname(__FILE__).'/Smarty-3.1.4/libs/Smarty.class.php');
-		
+
+	// strace showed that smarty is using the following php files
+	foreach (array(
+		"libs/sysplugins/smarty_cacheresource.php",
+		"libs/sysplugins/smarty_internal_cacheresource_file.php",
+		"libs/sysplugins/smarty_internal_data.php",
+		"libs/sysplugins/smarty_internal_resource_file.php",
+		"libs/sysplugins/smarty_internal_templatebase.php",
+		"libs/sysplugins/smarty_internal_template.php",
+		"libs/sysplugins/smarty_internal_write_file.php",
+		"libs/sysplugins/smarty_resource.php"
+	) as $force_load) {
+		require_once THIS_DIR.'/Smarty-3.1.4/'.$force_load;
+	}
 }
 
 function TEMPLATE_ENGINE_SMARTY_3_1_4_run($case, $data)
