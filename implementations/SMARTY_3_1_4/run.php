@@ -6,7 +6,7 @@ function TEMPLATE_ENGINE_SMARTY_3_1_4_info(){
   return array(
     "template_engine_name" =>  'smarty',
     "template_engine_version" => '3.1.4',
-    "template_engine_settings" => "debugging = false, caching = true, force_compile = false"
+    "template_engine_settings" => "debugging = false, caching = true, force_compile = false, compile_check=false, for each run using different cache_id"
   );
 }
 
@@ -34,8 +34,15 @@ function TEMPLATE_ENGINE_SMARTY_3_1_4_setup($tmp_dir)
 	}
 }
 
+// we don't want to benchmark testing, but how fast it is to generate HTML
+// using different contents from database or other sources
+// By using incrementing cache_id s smarty is forced to recreate the HTML each 
+// time. Eventually this is unfair ..
+$global_counter = 0;
+
 function TEMPLATE_ENGINE_SMARTY_3_1_4_run($case, $data)
 {
+	global $global_counter;
 
 	// smarty does not like our error handling
 	restore_error_handler();
@@ -51,11 +58,12 @@ function TEMPLATE_ENGINE_SMARTY_3_1_4_run($case, $data)
 			$smarty->debugging = false;
 			$smarty->caching = true;
 			$smarty->cache_lifetime = 120;
+			$smarty->compile_check = false;
 			$smarty->cache_dir = CACHE_DIR;
 			
 			$smarty->assign("data", $data);
 			
-			$result = $smarty->fetch(TEMPLATE_DIR.'/CASE_1.tpl');
+			$result = $smarty->fetch(TEMPLATE_DIR.'/CASE_1.tpl', $global_counter++);
 		break;
 
 
@@ -69,6 +77,7 @@ function TEMPLATE_ENGINE_SMARTY_3_1_4_run($case, $data)
 			$smarty->debugging = false;
 			$smarty->caching = true;
 			$smarty->cache_lifetime = 120;
+			$smarty->compile_check = false;
 			$smarty->cache_dir = CACHE_DIR;
 			
 			// maybe there is a faster way
@@ -76,7 +85,7 @@ function TEMPLATE_ENGINE_SMARTY_3_1_4_run($case, $data)
 				$smarty->assign($key, $value);
 			}
 			
-			$result = $smarty->fetch(TEMPLATE_DIR.'/CASE_2.tpl');
+			$result = $smarty->fetch(TEMPLATE_DIR.'/CASE_2.tpl', $global_counter++);
 			
 		break;
 		

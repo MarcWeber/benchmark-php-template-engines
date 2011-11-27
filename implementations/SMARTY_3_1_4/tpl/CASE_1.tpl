@@ -1,4 +1,3 @@
-{nocache}
 {section name=outer loop=$data}
   <table>
 	{foreach from=$data[outer] key=k item=v}
@@ -9,4 +8,3 @@
 	{/foreach}
   </table>
 {/section}
-{/nocache}
