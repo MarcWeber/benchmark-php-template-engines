@@ -51,4 +51,23 @@
 
         %img(src="#{$graph_url}")
 
-      %h2 Details:
+      %h2 Details about the test
+      %p
+        4 timings are measured in multiple test runs. Each time a new PHP
+        executable process is launched so that GC timing etc affects all runs
+        in a similar fair way.
+      %ul
+        %li \1. php startup time
+        %li
+          \2. setup_time of the engine. The main file is required and all .php
+          files typicall used. strace is used to reveal which files PHP opens.
+        %li
+          \3. time_case_1: 100 rows having 3 fields Surname, Lastname, age are rendered as table.
+        %li
+          \4. time_case_2: the result of 3 (content), title, header,
+          description, navigation, fields are rendered simulating a simple typical page
+      Want more details ? Read the
+      %a(href="https://github.com/MarcWeber/benchmark-php-template-engines") code on github.
+      %br
+      Eg start with the plain old
+      %a(href="https://github.com/MarcWeber/benchmark-php-template-engines/blob/master/implementations/php/run.php") PHP implementation

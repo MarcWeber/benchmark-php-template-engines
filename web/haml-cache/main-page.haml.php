@@ -34,7 +34,7 @@
 <li> assemlbing final page (inserting 3 $html strings into a &lt;html&gt;..&lt;/html&gt; template)</li>
 </ul>
 
-<p>It does not care about caching which eg Smarty also provides. This can
+<p>Details see bottom. It does not care about caching which eg Smarty also provides. This can
 be trivially be implemented for any template engine. The HTML Link
 proofs that all runs produce the same result.
 
@@ -91,6 +91,36 @@ proofs that all runs produce the same result.
 <img <?php
  echo HamlUtilities::renderAttribute('src',(($graph_url)),'\'','utf-8',false)?> />
 </div>
+
+<h2> Details about the test</h2>
+
+<p>4 timings are measured in multiple test runs. Each time a new PHP
+executable process is launched so that GC timing etc affects all runs
+in a similar fair way.
+</p>
+
+<ul>
+<li> 1. php startup time</li>
+
+<li>2. setup_time of the engine. The main file is required and all .php
+files typicall used. strace is used to reveal which files PHP opens.
+</li>
+
+<li>3. time_case_1: 100 rows having 3 fields Surname, Lastname, age are rendered as table.
+</li>
+
+<li>4. time_case_2: the result of 3 (content), title, header,
+description, navigation, fields are rendered simulating a simple typical page
+</li>
+</ul>
+Want more details ? Read the
+
+<a href='https://github.com/MarcWeber/benchmark-php-template-engines'> code on github.</a>
+
+<br />
+Eg start with the plain old
+
+<a href='https://github.com/MarcWeber/benchmark-php-template-engines/blob/master/implementations/php/run.php'> PHP implementation</a>
 </div>
 </body>
 </html>
