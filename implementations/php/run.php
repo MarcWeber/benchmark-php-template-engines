@@ -4,7 +4,8 @@ function TEMPLATE_ENGINE_PHP_info(){
   return array(
     "template_engine_name" =>  'php',
     "template_engine_version" => phpversion(),
-    "template_engine_settings" => ""
+    "template_engine_settings" => "",
+    "template_engine_url" => "http://php.net"
   );
 }
 

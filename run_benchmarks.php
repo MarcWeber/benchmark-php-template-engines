@@ -1,9 +1,15 @@
 <?php
 
-list($name, $n_runs, $n_iterations) = $argv;
 
 require_once 'lib/config.php' ;
 require_once 'lib/lib.php';
+
+if (empty($argv)){
+	throw new Exception('sample usage: php run_benchmarks.php 3 3');
+}
+
+list($name, $n_runs, $n_iterations) = $argv;
+
 if (defined('CATCH_ERRORS_RUN')) require_once 'lib/error-handling.php';
 
 try {

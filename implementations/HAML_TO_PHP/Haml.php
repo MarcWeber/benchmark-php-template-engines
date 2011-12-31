@@ -240,10 +240,10 @@ class Haml {
           curl_setopt($ch, CURLOPT_CAINFO, HAML_SERVICE_CAINFO);
         }
         $result = curl_exec($ch);
-        curl_close($ch);
         if ($result[0] !== ' '){
-          throw new Exception('HAML service returned invalid JSON: '.$result);
+          throw new Exception('HAML service returned invalid JSON: '.$result.' curl error : '.curl_error($ch));
         }
+        curl_close($ch);
         $result = json_decode(substr($result,1,strlen($result)-1), true);
         if (!is_array($result))
           throw new Exception('HAML service returned invalid JSON!');

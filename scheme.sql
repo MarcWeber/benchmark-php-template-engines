@@ -12,6 +12,7 @@ CREATE TABLE BENCHMARK_RUNS (
   n_iterations int(10) NOT NULL,
   template_engine_name_version varchar(200) NOT NULL,
   template_engine_name_info text NOT NULL,
+  template_engine_url text NOT NULL,
 
   html text COMMENT "the rendered HTML of this run so that users can confirm everything is ok",
 

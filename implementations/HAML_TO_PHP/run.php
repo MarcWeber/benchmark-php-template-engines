@@ -7,7 +7,8 @@ http://titanpad.com/moZN7Lm1Nr
   return array(
     "template_engine_name" =>  'HAML-TO-PHP',
     "template_engine_version" => 'WEB '.date('Y-m-d'),
-    "template_engine_settings" => ""
+    "template_engine_settings" => "",
+    "template_engine_url" => "haml-to-php.com"
   );
 }
 

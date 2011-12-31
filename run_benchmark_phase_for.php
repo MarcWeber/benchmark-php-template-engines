@@ -95,10 +95,11 @@ switch ($work) {
 			  n_iterations, 
 			  template_engine_name_version, 
 			  template_engine_name_info,
+			  template_engine_url,
 
 			  html
 			) 
-			VALUES (?,?,?,?,?,?,?,?,?,?)';
+			VALUES (?,?,?,?,?,?,?,?,?,?,?)';
 
 		$i = $db->prepare( $sql );
 		// throw new Exception($db->error);
@@ -108,7 +109,7 @@ switch ($work) {
 		$cpu_info = cpu_info();
 		$php_info = phpversion();
 		$template_engine_settings = $info['template_engine_settings'];
-		$i->bind_param( 'ssssssssss',
+		$i->bind_param( 'sssssssssss',
 			$time_setup, $time_case_1, $time_case_2, 
 
 			$cpu_info, 
@@ -116,6 +117,7 @@ switch ($work) {
 			$n_runs, $n_iterations,
 			$engine,
 			$template_engine_settings,
+			$info['template_engine_url'],
 
 			$html_page
 	    );

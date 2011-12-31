@@ -6,7 +6,8 @@ function TEMPLATE_ENGINE_SMARTY_3_1_4_info(){
   return array(
     "template_engine_name" =>  'smarty',
     "template_engine_version" => '3.1.4',
-    "template_engine_settings" => "debugging = false, caching = true, force_compile = false, compile_check=false, for each run using different cache_id"
+    "template_engine_settings" => "debugging = false, caching = true, force_compile = false, compile_check=false, for each run using different cache_id",
+    "template_engine_url" => "http://www.smarty.net/"
   );
 }
 
@@ -56,7 +57,7 @@ function TEMPLATE_ENGINE_SMARTY_3_1_4_run($case, $data)
 			
 			$smarty->force_compile = false;
 			$smarty->debugging = false;
-			$smarty->caching = true;
+			$smarty->caching = false; // be fair - don't make Smarty write many files
 			$smarty->cache_lifetime = 120;
 			$smarty->compile_check = false;
 			$smarty->cache_dir = CACHE_DIR;
