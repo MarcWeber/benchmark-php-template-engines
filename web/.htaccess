@@ -1,0 +1,10 @@
+# RewriteEngine On
+# RewriteBase /haml-to-php/htdocs
+# # RewriteCond %{HTTP_HOST} ^DOMAIN$
+# RewriteRule ^([^./]*).html$     index.php?page=$1&%{QUERY_STRING}
+# RewriteRule ^([^./]*).html$     index.php?page=$1&%{QUERY_STRING}
+# RewriteRule ^([^./]*)/$     index.php?page=$1,try&%{QUERY_STRING}
+# RewriteRule ^([^./]*)/([^./]*).html$     index.php?page=$1,$2&%{QUERY_STRING}
+# RewriteRule ^([^./]*)/paypal.php     index.php?page=$1,paypal&%{QUERY_STRING}
+# 
+# RewriteRule ^$     index.php?%{QUERY_STRING}

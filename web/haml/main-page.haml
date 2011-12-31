@@ -1,0 +1,54 @@
+!!!
+%html
+  %head
+    %title=$title
+    %meta(http-equiv="content-type" content="text/html; charset=UTF-8")
+
+    - $lang_meta = strtolower(LANG_META)
+    %meta(name="language" content=$lang_meta)
+    %meta(name="description" content="nifyt expressive template engine for PHP: #{$title}")
+    %meta(http-equiv="content-language" content="#{$lang_meta}")
+    -header('Content-language: '.$lang_meta)
+
+  %body
+    %div
+      %h1=$title
+      %p
+        This benchmark only takes timings of
+      %ul
+        %li starting up a template engine (load all necesseary .php files)
+        %li putting (quoted/verbatim) text into HTML like text with placeholders
+        %li assemlbing final page (inserting 3 $html strings into a <html>..</html> template)
+
+      %p
+        Details see bottom. It does not care about caching which eg Smarty also provides. This can
+        be trivially be implemented for any template engine. The HTML Link
+        proofs that all runs produce the same result.
+
+
+      %div
+        %h2 timing values:
+        %table
+          %tr
+            %th chart nr
+            %th Engine
+            %th time_setup [ms]
+            %th time_case_1 [ms]
+            %th time_case_2 [ms]
+            %th proof
+
+          - $i = count($werte)-1
+          -foreach($werte as $wert)
+            %tr
+              %td=$i--
+              %td
+                %a(href="#{$wert['url']}")=$wert['template_engine_name_version']
+              %td=$wert['time_setup']*1000
+              %td=$wert['time_case_1']*1000
+              %td=$wert['time_case_2']*1000
+              %td
+                %a(href="#{'?html_engine='.$wert['id']}") HTML
+
+        %img(src="#{$graph_url}")
+
+      %h2 Details:
