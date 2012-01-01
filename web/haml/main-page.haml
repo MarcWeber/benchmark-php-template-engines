@@ -36,6 +36,8 @@
             %th time_case_1 [ms]
             %th time_case_2 [ms]
             %th proof
+            %th n_runs
+            %th n_iterations
 
           - $i = count($werte)-1
           -foreach($werte as $wert)
@@ -48,6 +50,8 @@
               %td=$wert['time_case_2']*1000
               %td
                 %a(href="#{'?html_engine='.$wert['id']}") HTML
+              %td=$wert['n_runs'];
+              %td=$wert['n_iterations'];
 
         %img(src="#{$graph_url}")
 
