@@ -43,7 +43,7 @@ $sql = '
 	template_engine_name_version, 
 	template_engine_name_info,
 	template_engine_url FROM BENCHMARK_RUNS
-
+	ORDER BY template_engine_name_version
 	';
 
 $werte = array();
