@@ -1,0 +1,3 @@
+[submodule "implementations/haanga/Haanga"]
+	path = implementations/haanga/Haanga
+	url = https://github.com/crodas/Haanga
