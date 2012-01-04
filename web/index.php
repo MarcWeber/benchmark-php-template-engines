@@ -35,6 +35,7 @@ $sql = '
 	time_setup,
 	time_case_1,
 	time_case_2,
+	insert_date,
 
 	cpu_info, 
 	php_version, 
