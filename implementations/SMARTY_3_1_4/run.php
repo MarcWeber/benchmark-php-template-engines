@@ -6,7 +6,7 @@ function TEMPLATE_ENGINE_SMARTY_3_1_4_info(){
   return array(
     "template_engine_name" =>  'smarty',
     "template_engine_version" => '3.1.4',
-    "template_engine_settings" => "debugging = false, caching = true, force_compile = false, compile_check=false, for each run using different cache_id",
+    "template_engine_settings" => "debugging = false, caching = false, force_compile = false, compile_check=false, for each run using different cache_id",
     "template_engine_url" => "http://www.smarty.net/"
   );
 }
